@@ -36,7 +36,7 @@ class ZohoOAuth(object):
             oAuthParams=ZohoOAuthParams.get_instance(ZohoOAuth.configProperties[ZohoOAuthConstants.CLIENT_ID], ZohoOAuth.configProperties[ZohoOAuthConstants.CLIENT_SECRET], ZohoOAuth.configProperties[ZohoOAuthConstants.REDIRECT_URL])
             ZohoOAuthClient.get_instance(oAuthParams)
         except Exception as ex:
-            OAuthLogger.add_log('Exception occured while reading oauth configurations',logging.ERROR,ex)
+            OAuthLogger.add_log('Exception occured while reading oauth configurations',logging.DEBUG,ex)
             raise ex
     
     @staticmethod
@@ -109,7 +109,7 @@ class ZohoOAuth(object):
                 except Exception as e:
                     raise e
             except Exception as ex:
-                OAuthLogger.add_log("Exception occured while fetching instance for Custom DB Persistence", logging.ERROR, ex)
+                OAuthLogger.add_log("Exception occured while fetching instance for Custom DB Persistence", logging.DEBUG, ex)
                 raise ex
 
 class ZohoOAuthClient(object):
@@ -142,7 +142,7 @@ class ZohoOAuthClient(object):
                 oAuthTokens=self.refresh_access_token(oAuthTokens.refreshToken,userEmail)
                 return oAuthTokens.accessToken
         except Exception as ex:
-            OAuthLogger.add_log("Exception occured while fetching oauthtoken from db",logging.ERROR,ex)
+            OAuthLogger.add_log("Exception occured while fetching oauthtoken from db",logging.DEBUG,ex)
             raise ex
     def generate_access_token_from_refresh_token(self,refreshToken,userEmail):
         self.refresh_access_token(refreshToken, userEmail)
@@ -164,7 +164,7 @@ class ZohoOAuthClient(object):
                 return oAuthTokens
             
         except ZohoOAuthException as ex:
-            OAuthLogger.add_log("Exception occured while refreshing oauthtoken",logging.ERROR,ex)
+            OAuthLogger.add_log("Exception occured while refreshing oauthtoken",logging.DEBUG,ex)
             raise ex
             
     def generate_access_token(self,grantToken):
@@ -186,7 +186,7 @@ class ZohoOAuthClient(object):
                 raise ZohoOAuthException("Exception occured while fetching accesstoken from Grant Token;Response is:"+str(responseJSON))
             
         except ZohoOAuthException as ex:
-            OAuthLogger.add_log("Exception occured while generating access token",logging.ERROR,ex)
+            OAuthLogger.add_log("Exception occured while generating access token",logging.DEBUG,ex)
             raise ex
     
     def get_tokens_from_json(self,responseJson):

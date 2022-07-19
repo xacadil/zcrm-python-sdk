@@ -25,7 +25,7 @@ class ZohoOAuthPersistenceHandler(object):
             connection.commit()
         except Exception as ex:
             import logging
-            OAuthLogger.add_log("Exception occured while saving oauthtokens into DB ",logging.ERROR,ex)
+            OAuthLogger.add_log("Exception occured while saving oauthtokens into DB ",logging.DEBUG,ex)
             raise ex
         finally:
             cursor.close()
@@ -49,7 +49,7 @@ class ZohoOAuthPersistenceHandler(object):
                 raise Exception('No rows found for the given user')
         except Exception as ex:
             import logging
-            OAuthLogger.add_log("Exception occured while fetching oauthtokens from DB ",logging.ERROR,ex)
+            OAuthLogger.add_log("Exception occured while fetching oauthtokens from DB ",logging.DEBUG,ex)
             raise ex
         finally:
             cursor.close()
@@ -64,7 +64,7 @@ class ZohoOAuthPersistenceHandler(object):
             connection.commit()
         except Exception as ex:
             import logging
-            OAuthLogger.add_log("Exception occured while deleting oauthtokens from DB ",logging.ERROR,ex)
+            OAuthLogger.add_log("Exception occured while deleting oauthtokens from DB ",logging.DEBUG,ex)
             raise ex
         finally:
             cursor.close()
@@ -110,7 +110,7 @@ class ZohoOAuthPersistenceFileHandler(object):
             
         except Exception as ex:
             import logging
-            OAuthLogger.add_log("Exception occured while saving oauthtokens into File ",logging.ERROR,ex)
+            OAuthLogger.add_log("Exception occured while saving oauthtokens into File ",logging.DEBUG,ex)
             raise ex
         
     def get_oauthtokens(self,userEmail):
@@ -137,7 +137,7 @@ class ZohoOAuthPersistenceFileHandler(object):
             return responseObj
         except Exception as ex:
             import logging
-            OAuthLogger.add_log("Exception occured while fetching oauthtokens from File ",logging.ERROR,ex)
+            OAuthLogger.add_log("Exception occured while fetching oauthtokens from File ",logging.DEBUG,ex)
             raise ex
             
     def delete_oauthtokens(self,userEmail):
@@ -161,5 +161,5 @@ class ZohoOAuthPersistenceFileHandler(object):
             
         except Exception as ex:
             import logging
-            OAuthLogger.add_log("Exception occured while deleting oauthtokens from File ",logging.ERROR,ex)
+            OAuthLogger.add_log("Exception occured while deleting oauthtokens from File ",logging.DEBUG,ex)
             raise ex
