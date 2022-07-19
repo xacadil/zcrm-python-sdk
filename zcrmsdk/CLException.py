@@ -33,7 +33,7 @@ class Logger(object):
         logger.setLevel(logging.INFO)
         console_handler = logging.StreamHandler()
         # create formatter and add it to the handlers
-        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        formatter = logging.Formatter('%(asctime)s - %(name)s')
         try:
             from .Utility import ZCRMConfigUtil
         except ImportError:
@@ -54,8 +54,7 @@ class Logger(object):
         
         if(exception!=None):
             message+='; Issue Message::'+exception.__str__()
-        if(level==logging.ERROR):
-            logger.debug(message)
+        
         elif(level==logging.INFO or level==logging.INFO):
             logger.debug(message)
         elif(level==logging.WARNING):
