@@ -33,7 +33,7 @@ class Logger(object):
         logger.setLevel(logging.INFO)
         console_handler = logging.StreamHandler()
         # create formatter and add it to the handlers
-        formatter = logging.Formatter('%(asctime)s - %(name)s')
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         try:
             from .Utility import ZCRMConfigUtil
         except ImportError:
