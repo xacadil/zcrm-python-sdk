@@ -53,7 +53,7 @@ class Logger(object):
         logger.addHandler(console_handler)
         
         if(exception!=None):
-            message+='; Exception Message::'+exception.__str__()
+            message+='; Issue Message::'+exception.__str__()
         if(level==logging.ERROR):
             logger.error(message)
         elif(level==logging.INFO or level==logging.DEBUG):
