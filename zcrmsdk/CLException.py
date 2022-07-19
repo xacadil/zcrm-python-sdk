@@ -8,9 +8,9 @@ class ZCRMException(Exception):
     '''
     This is the custom exception class for handling for Client Library exceptions 
     '''
-    message = 'Error occurred for {url}. Error Code: {code} Response error_content: {error_content}. Error Details::{error_details}'
+    message = 'Issue occurred for {url}. Issue Code: {code} Response issue_content: {error_content}. Issue Details::{error_details}'
 
-    def __init__(self, url, status_code, err_message,exception_code='error',details=None,content=None):
+    def __init__(self, url, status_code, err_message,exception_code='info',details=None,content=None):
         self.url = url
         self.status_code = status_code
         self.error_content = content
