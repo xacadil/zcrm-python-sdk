@@ -30,7 +30,7 @@ class Logger(object):
     '''
     @staticmethod
     def add_log(message,level=None,exception=None):
-        logger.setLevel(logging.DEBUG)
+        logger.setLevel(logging.INFO)
         console_handler = logging.StreamHandler()
         # create formatter and add it to the handlers
         formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -43,11 +43,11 @@ class Logger(object):
             import os
             log_path=os.path.join(log_path,'client_library.log')
             file_handler=logging.FileHandler(log_path)
-            file_handler.setLevel(logging.DEBUG)
+            file_handler.setLevel(logging.INFO)
             file_handler.setFormatter(formatter)
             logger.addHandler(file_handler)
         
-        console_handler.setLevel(logging.DEBUG)
+        console_handler.setLevel(logging.INFO)
         console_handler.setFormatter(formatter)
         # add the handlers to the logger
         logger.addHandler(console_handler)
@@ -56,7 +56,7 @@ class Logger(object):
             message+='; Issue Message::'+exception.__str__()
         if(level==logging.ERROR):
             logger.debug(message)
-        elif(level==logging.INFO or level==logging.DEBUG):
+        elif(level==logging.INFO or level==logging.INFO):
             logger.debug(message)
         elif(level==logging.WARNING):
             logger.warning(message)

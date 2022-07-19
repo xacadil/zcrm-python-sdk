@@ -132,7 +132,7 @@ class OAuthLogger(object):
     '''
     @staticmethod
     def add_log(message,level,exception=None):
-        logger.setLevel(logging.DEBUG)
+        logger.setLevel(logging.INFO)
         consoleHandler = logging.StreamHandler()
         # create formatter and add it to the handlers
         formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -149,11 +149,11 @@ class OAuthLogger(object):
             log_path=os.path.join(log_path,'oauth.log')
         
             fileHandler=logging.FileHandler(log_path)
-            fileHandler.setLevel(logging.DEBUG)
+            fileHandler.setLevel(logging.INFO)
             fileHandler.setFormatter(formatter)
             logger.addHandler(fileHandler)
         
-        consoleHandler.setLevel(logging.DEBUG)
+        consoleHandler.setLevel(logging.INFO)
         consoleHandler.setFormatter(formatter)
         # add the handlers to the logger
         logger.addHandler(consoleHandler)
@@ -161,7 +161,7 @@ class OAuthLogger(object):
         
         if(exception!=None):
             message+='; Issue Message::'+exception.__str__()
-        if(level==logging.DEBUG):
+        if(level==logging.INFO):
             logger.info(message)
         elif(level==logging.INFO):
             logger.info(message)

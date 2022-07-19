@@ -254,7 +254,7 @@ class CommonUtil(object):
             from .CLException import Logger
         except ImportError:
             from CLException import Logger
-        Logger.add_log(message,logging.DEBUG,zcrm_exception)
+        Logger.add_log(message,logging.INFO,zcrm_exception)
         raise zcrm_exception
     
     @staticmethod

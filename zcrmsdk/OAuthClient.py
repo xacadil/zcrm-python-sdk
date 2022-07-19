@@ -36,7 +36,7 @@ class ZohoOAuth(object):
             oAuthParams=ZohoOAuthParams.get_instance(ZohoOAuth.configProperties[ZohoOAuthConstants.CLIENT_ID], ZohoOAuth.configProperties[ZohoOAuthConstants.CLIENT_SECRET], ZohoOAuth.configProperties[ZohoOAuthConstants.REDIRECT_URL])
             ZohoOAuthClient.get_instance(oAuthParams)
         except Exception as ex:
-            OAuthLogger.add_log('Issue occured while reading oauth configurations',logging.DEBUG,ex)
+            OAuthLogger.add_log('Issue occured while reading oauth configurations',logging.INFO,ex)
             raise ex
     
     @staticmethod
@@ -164,7 +164,7 @@ class ZohoOAuthClient(object):
                 return oAuthTokens
             
         except ZohoOAuthException as ex:
-            OAuthLogger.add_log("Issue occured while refreshing oauthtoken",logging.DEBUG,ex)
+            OAuthLogger.add_log("Issue occured while refreshing oauthtoken",logging.INFO,ex)
             raise ex
             
     def generate_access_token(self,grantToken):
@@ -186,7 +186,7 @@ class ZohoOAuthClient(object):
                 raise ZohoOAuthException("Issue occured while fetching accesstoken from Grant Token;Response is:"+str(responseJSON))
             
         except ZohoOAuthException as ex:
-            OAuthLogger.add_log("Issue occured while generating access token",logging.DEBUG,ex)
+            OAuthLogger.add_log("Issue occured while generating access token",logging.INFO,ex)
             raise ex
     
     def get_tokens_from_json(self,responseJson):
