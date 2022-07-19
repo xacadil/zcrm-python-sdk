@@ -55,7 +55,7 @@ class Logger(object):
         if(exception!=None):
             message+='; Issue Message::'+exception.__str__()
         if(level==logging.ERROR):
-            logger.error(message)
+            logger.debug(message)
         elif(level==logging.INFO or level==logging.DEBUG):
             logger.debug(message)
         elif(level==logging.WARNING):
