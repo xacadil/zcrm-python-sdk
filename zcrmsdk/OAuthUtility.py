@@ -160,7 +160,7 @@ class OAuthLogger(object):
         
         
         if(exception!=None):
-            message+='; Exception Message::'+exception.__str__()
+            message+='; Issue Message::'+exception.__str__()
         if(level==logging.ERROR):
             logger.error(message)
         elif(level==logging.INFO):
