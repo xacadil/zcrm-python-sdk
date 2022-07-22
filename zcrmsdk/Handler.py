@@ -1028,7 +1028,7 @@ class MassEntityAPIHandler(APIHandler):
             api_constant = APIConstants.DATA
             handler_ins.request_api_key = api_constant
 
-            if (self.module_instance.api_name == "users") or (self.module_instance.api_name == "evnts"):
+            if (self.module_instance.api_name == "users"):
                 api_constant = self.module_instance.api_name
 
             if cvid is not None:
