@@ -480,7 +480,10 @@ class EntityAPIHandler(APIHandler):
         participant = ZCRMEventParticipant.get_instance(
             participantDetails['type'], participantDetails['participant'])
         participant.name = participantDetails["name"]
-        participant.email = participantDetails["Email"]
+        if "Email" not in participantDetails and participantDetails["type"] == "email":
+            participant.email = participantDetails['participant']
+        else:
+            participant.email=participantDetails["Email"]
         participant.is_invited = bool(participantDetails["invited"])
         participant.status = participantDetails["status"]
 
