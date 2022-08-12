@@ -10,6 +10,7 @@ except ImportError:
     from OAuthUtility import OAuthLogger,ZohoOAuthConstants,ZohoOAuthException,ZohoOAuthHTTPConnector,ZohoOAuthParams
     from Persistence import ZohoOAuthPersistenceHandler,ZohoOAuthPersistenceFileHandler
 import logging
+import backoff
 class ZohoOAuth(object):
     '''
     This class is to load oauth configurations and provide OAuth request URIs
@@ -130,7 +131,13 @@ class ZohoOAuthClient(object):
         if(param!=None and ZohoOAuthClient.oAuthClientIns==None):
             ZohoOAuthClient.oAuthClientIns=ZohoOAuthClient(param)
         return ZohoOAuthClient.oAuthClientIns
-            
+
+    @backoff.on_exception(
+        backoff.expo,
+        Exception,
+        max_tries=10,
+        factor=3,
+    )        
     def get_access_token(self,userEmail):
         try:
             handler=ZohoOAuth.get_persistence_instance()

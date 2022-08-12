@@ -42,6 +42,7 @@ setup(
     ],
     install_requires=[
         'requests',
+        'backoff'
     ],
 
     # What does your project relate to?
