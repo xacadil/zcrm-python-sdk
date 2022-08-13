@@ -232,6 +232,12 @@ class ZohoOAuthTokens(object):
         self.expiryTime=expiry_time
         self.userEmail=user_email
         
+    @backoff.on_exception(
+        backoff.expo,
+        Exception,
+        max_tries=10,
+        factor=3,
+    )         
     def get_access_token(self):
         if((self.expiryTime-self.get_current_time_in_millis())>5000):
             return self.accessToken
