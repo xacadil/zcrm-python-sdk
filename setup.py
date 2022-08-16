@@ -41,8 +41,7 @@ setup(
         'Programming Language :: Python :: 3.5',
     ],
     install_requires=[
-        'requests',
-        'backoff'
+        'requests'
     ],
 
     # What does your project relate to?
