@@ -10,7 +10,7 @@ except ImportError:
     from OAuthUtility import OAuthLogger,ZohoOAuthConstants,ZohoOAuthException,ZohoOAuthHTTPConnector,ZohoOAuthParams
     from Persistence import ZohoOAuthPersistenceHandler,ZohoOAuthPersistenceFileHandler
 import logging
-import backoff
+# import backoff
 class ZohoOAuth(object):
     '''
     This class is to load oauth configurations and provide OAuth request URIs
