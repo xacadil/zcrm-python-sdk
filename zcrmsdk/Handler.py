@@ -1034,6 +1034,9 @@ class MassEntityAPIHandler(APIHandler):
             if (self.module_instance.api_name == "users"):
                 api_constant = self.module_instance.api_name
 
+            if (self.module_instance.api_name == "settings/roles"):
+                api_constant = APIConstants.ROLES    
+
             if cvid is not None:
                 handler_ins.add_param("cvid", cvid)
             if sort_by is not None:
