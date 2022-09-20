@@ -1444,6 +1444,8 @@ class ModuleAPIHandler(APIHandler):
             fields = bulk_api_response.response_json[APIConstants.FIELDS]
             field_instance_arr = list()
             for field in fields:
+                if 'lookup' in field and len(field['lookup']) > 0:
+                    field.pop('lookup')
                 field_instance_arr.append(self.get_zcrmfield(field))
             bulk_api_response.data = field_instance_arr
             return bulk_api_response
